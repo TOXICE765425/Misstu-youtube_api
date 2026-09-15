@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/song.py",
+      "use": "@vercel/python",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/song",
+      "dest": "/api/song.py"
+    },
+    {
+      "src": "/api/mp3",
+      "dest": "/api/song.py"
+    },
+    {
+      "src": "/",
+      "dest": "/api/song.py"
+    }
+  ]
+}
