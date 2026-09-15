@@ -20,6 +20,16 @@ DEVELOPER = "@misstu001"
 
 
 # ==========================================
+# 🔑 YOUTUBE API KEY (HARDCODED)
+# ==========================================
+
+YOUTUBE_API_KEY = os.environ.get(
+    "YOUTUBE_API_KEY",
+    "AIzaSyBq_7Oj1KpgcGHGcUe52o-WXC1maqTNQH8"
+)
+
+
+# ==========================================
 # JSON RESPONSE HELPER
 # ==========================================
 
@@ -214,9 +224,7 @@ class handler(BaseHTTPRequestHandler):
             )
             return
 
-        API_KEY = os.environ.get("YOUTUBE_API_KEY")
-
-        if not API_KEY:
+        if not YOUTUBE_API_KEY:
 
             send_json(
                 self,
@@ -238,7 +246,7 @@ class handler(BaseHTTPRequestHandler):
             "&maxResults=10"
             "&order=relevance"
             "&regionCode=IN"
-            "&key=" + quote(API_KEY)
+            "&key=" + quote(YOUTUBE_API_KEY)
         )
 
         try:
